@@ -11,9 +11,9 @@ app.use(cors())
 const apiKey = process.env.APIKEY
 const ai =  new googleGenai.GoogleGenAI({apiKey:apiKey})
 
-  // app.get('/', (req, res) => {
-  //   return HTTP
-  // });
+  app.get('/', (req, res) => {
+    res.send("Hello world")
+  });
 
 app.post("/AI",async(req,res) =>{
   try{
