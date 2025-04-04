@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   });
   
 
-  app.get('/TEST', (req, res) => {
+  app.get('/', (req, res) => {
     return "TESTING"
   });
 
