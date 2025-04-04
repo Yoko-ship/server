@@ -11,32 +11,32 @@ app.use(cors())
 const apiKey = process.env.APIKEY
 const ai =  new googleGenai.GoogleGenAI({apiKey:apiKey})
 
-  app.get('/', (req, res) => {
-    return "TESTING"
-  });
+  // app.get('/', (req, res) => {
+  //   return HTTP
+  // });
 
-// app.post("/AI",async(req,res) =>{
-//   try{
-//     const value = req.body
-//     const content = value.description
-//     if(!content){
-//       return res.status(400).json({message: "No valid data"})
-//     }
-//     const response = await ai.models.generateContent({
-//         model: "gemini-2.0-flash",
-//         contents:promptInstructions + content,
-//     });
-//     const result = response.text
-//     if(!result){
-//       return res.status(400).json({message: "Failed to get data. Please try again"})
-//     }
-//     res.json({event:result})
-//   }
-//   catch(error){
-//     res.status(500).json({message:error.message})
-//   }
+app.post("/AI",async(req,res) =>{
+  try{
+    const value = req.body
+    const content = value.description
+    if(!content){
+      return res.status(400).json({message: "No valid data"})
+    }
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents:promptInstructions + content,
+    });
+    const result = response.text
+    if(!result){
+      return res.status(400).json({message: "Failed to get data. Please try again"})
+    }
+    res.json({event:result})
+  }
+  catch(error){
+    res.status(500).json({message:error.message})
+  }
 
-// })
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
