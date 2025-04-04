@@ -29,27 +29,27 @@ app.use((req, res, next) => {
     return "TESTING"
   });
 
-app.post("/AI",async(req,res) =>{
-  try{
-    const value = req.body
-    const content = value.description
-    if(!content){
-      return res.status(400).json({message: "No valid data"})
-    }
-    const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
-        contents:promptInstructions + content,
-    });
-    const result = response.text
-    if(!result){
-      return res.status(400).json({message: "Failed to get data. Please try again"})
-    }
-    res.json({event:result})
-  }
-  catch(error){
-    res.status(500).json({message:error.message})
-  }
+// app.post("/AI",async(req,res) =>{
+//   try{
+//     const value = req.body
+//     const content = value.description
+//     if(!content){
+//       return res.status(400).json({message: "No valid data"})
+//     }
+//     const response = await ai.models.generateContent({
+//         model: "gemini-2.0-flash",
+//         contents:promptInstructions + content,
+//     });
+//     const result = response.text
+//     if(!result){
+//       return res.status(400).json({message: "Failed to get data. Please try again"})
+//     }
+//     res.json({event:result})
+//   }
+//   catch(error){
+//     res.status(500).json({message:error.message})
+//   }
 
-})
+// })
 
 module.exports = app
