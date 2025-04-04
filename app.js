@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   
 
   app.get('/TEST', (req, res) => {
-    res.json({ message: 'Hello from AI endpoint' });
+    return "TESTING"
   });
 
 app.post("/AI",async(req,res) =>{
