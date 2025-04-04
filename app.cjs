@@ -1,9 +1,6 @@
-import express from "express"
-import { GoogleGenAI } from "@google/genai"
-import "dotenv/config"
-import { configDotenv } from "dotenv"
-configDotenv({path:'../.env'})
-import cors from "cors"
+const express = require("express")
+const googleGenai = require("@google/genai")
+const cors = require("cors")
 const promptInstructions = `
 Представь, что ты профессиональный эксперт.Ты знаешь абсолютно всё умеешь объяснять даже самым начинающим. Объясни мне просто, как будто мне 5 лет, используя доступные слова,молодежные сленги,возможно мемы, примеры и аналогии. Добавь в конец вопросы по теме,и Проверь себя ! Тема: 
 `
@@ -12,7 +9,7 @@ app.use(express.json())
 
 app.use(cors())
 const apiKey = process.env.APIKEY
-const ai = new GoogleGenAI({apiKey:apiKey})
+const ai =  new googleGenai.GoogleGenAI({apiKey:apiKey})
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
