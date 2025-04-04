@@ -33,6 +33,7 @@ app.use((req, res, next) => {
   });
 
 app.post("/AI",async(req,res) =>{
+  try{
     const value = req.body
     const content = value.description
     if(!content){
@@ -47,9 +48,11 @@ app.post("/AI",async(req,res) =>{
       return res.status(400).json({message: "Failed to get data. Please try again"})
     }
     res.json({event:result})
+  }
+  catch(error){
+    res.status(500).json({message:error.message})
+  }
 
 })
 
-app.listen(3000,() =>{
-  console.log("Сервер работает на порте 3000")
-})
+module.exports = app
