@@ -50,4 +50,6 @@ app.post("/AI",async(req,res) =>{
 
 })
 
-export default app
+app.listen(3000,() =>{
+  console.log("Сервер работает на порте 3000")
+})
