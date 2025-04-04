@@ -18,7 +18,7 @@ app.post("/2", (req, res) => {
   res.send("hello wl");
 });
 
-app.post("/ai", async (req, res) => {
+app.post("/ai",  (req, res) => {
   // try {
   //   const value = req.body;
   //   const content = value.description;
