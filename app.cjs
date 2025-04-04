@@ -11,20 +11,6 @@ app.use(cors())
 const apiKey = process.env.APIKEY
 const ai =  new googleGenai.GoogleGenAI({apiKey:apiKey})
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Methods',
-      'GET, POST, PUT, DELETE, OPTIONS'
-    );
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-Requested-With,content-type'
-    );
-    next();
-  });
-  
-
   app.get('/', (req, res) => {
     return "TESTING"
   });
